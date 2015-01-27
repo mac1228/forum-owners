@@ -1,23 +1,33 @@
 var express = require('express');
 var router = express.Router();
-var homepage = require('../homepage.json')
+var homedata = require('../homepage.json');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var homearray = [];
+  homearray = homedata.home;
   res.render('index', { 
-  	title: 'Welcome to Forum Owners!',
-  	home : homepage
+  	title: 'Welcome to Forum Owners',
+  	home : homearray
   });
 });
 
 /* GET leaderboard page. */
-router.get('/leaderboard', function(req, res, next) {
+router.get('/leaderboards', function(req, res, next) {
   res.render('index', { title: 'Leaderboard' });
 });
 
 /* GET forum health page. */
 router.get('/health', function(req, res, next) {
-  res.render('index', { title: 'Forum Health' });
+  var username;
+  if(req.cookies.username){
+    username = req.cookies.username;
+    res.cookie('username', username, { expires: new Date(Date.now() + 900000), httpOnly: true });
+  }
+  res.render('index', { 
+    title: 'Forum Health',
+    user: username 
+  });
 });
 
 /* GET question aggregator page. */
@@ -31,7 +41,7 @@ router.get('/addplayers', function(req, res, next) {
 });
 
 /* GET add players page. */
-router.get('/playerslist', function(req, res, next) {
+router.get('/players', function(req, res, next) {
   res.render('index', { title: 'List of Players' });
 });
 
@@ -76,7 +86,7 @@ router.get('/trackedforums', function(req, res, next) {
 });
 
 /* GET Forum Owner Schedule page. */
-router.get('/forumownerscedule', function(req, res, next) {
+router.get('/schedule', function(req, res, next) {
   res.render('index', { title: 'Forum Owner Schedule' });
 });
 
@@ -91,7 +101,7 @@ router.get('/responsibilities', function(req, res, next) {
 });
 
 /* GET Prize of the Month page. */
-router.get('/prize', function(req, res, next) {
+router.get('/prizes', function(req, res, next) {
   res.render('index', { title: 'Prize of the Month!' });
 });
 

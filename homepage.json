@@ -1,26 +1,34 @@
 {
-  "players": {
-    "name" : "Players",
-    "url" : "/"
-  },
-  "questions": {
-    "name" : "Question Aggregator",
-    "url" : "/"
-  },
-  "leaderboards": {
-    "name" : "Leaderboards",
-    "url" : "/"
-  },
-  "prizes": {
-    "name" : "Prize of the Month",
-    "url" : "/"
-  },
-  "timeline": {
-    "name" : "Timeline",
-    "url" : "/"
-  },
-  "forumowner": {
-    "name" : "Forum Owner of the Week",
-    "url" : "/"
-  }
+  "home": [
+    {
+      "name" : "Players",
+      "url" : "/players",
+      "class": "players"
+    },
+    {
+      "name" : "Forum Questions",
+      "url" : "/questions",
+      "class": "questions"
+    },
+    {
+      "name" : "Leaderboards",
+      "url" : "/leaderboards",
+      "class": "leaderboards"
+    },
+    {
+      "name" : "Prize of the Month",
+      "url" : "/prizes",
+      "class": "prizes"
+    },
+    {
+      "name" : "Timeline",
+      "url" : "/timeline",
+      "class": "timeline"
+    },
+    {
+      "name" : "Forum Owner of the Week",
+      "url" : "/forumowner",
+      "class": "forumowner"
+    }
+  ]
 }

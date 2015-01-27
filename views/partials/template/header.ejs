@@ -1,9 +1,58 @@
 <header>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="topnav">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">Forum Owners</a>
+          <a class="navbar-brand" href="/">Forum <i class="fa fa-windows"></i> Owners</a>
         </div>
+        <div class="navbar-right">
+        	<ul class="nav navbar-nav">
+	          <li class="dropdown">
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-server fa-lg"></i></a>
+	            <ul class="dropdown-menu" role="menu">
+
+	              <li class="dropdown-header">About</li>
+	              <li><a href="/howthisworks">How this works?</a></li>
+	              <li><a href="/responsibilities">Roles and Responsibilities</a></li>
+	              <li><a href="/forumowner">Forum Owner of the Week</a></li>
+	              <li><a href="/schedule">Forum Owner Schedule</a></li>
+	              <li><a href="/players">Players</a></li>
+	              <li class="divider"></li>
+
+	              <li class="dropdown-header">Own the Forums!</li>
+	              <li><a href="/questions">Forum Questions</a></li>
+	              <li><a href="/health">Forum Health</a></li>
+	              <li class="divider"></li>
+
+	              <li class="dropdown-header"><i class="fa fa-smile-o fa-lg"></i></li>	              
+	              <li><a href="/achievements">List of Achievements</a></li>	   
+	              <li><a href="/prizes">Prize of the Month</a></li>
+	              <li><a href="/timeline">Timeline</a></li>
+	              <li><a href="/leaderboards">Leaderboards</a></li>	              
+	              <li><a href="/tournament">Tournament</a></li>
+	              <li><a href="/teams">Teams</a></li>
+	              <li><a href="/challenges">Challenges</a></li>
+
+	            </ul>
+	          </li>
+        	</ul>
+        </div>
+        <% if (typeof remember == "undefined"){ %>
+    		<form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Alias" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+    	<% } else {%>
+    		<div class="navbar-right">
+    			<ul class="nav navbar-nav">
+    				<li><a href="#">Hi, Michael</a></li>
+    			</ul>
+    		</div>
+    	<% } %>
       </div>
     </nav>
 </header>

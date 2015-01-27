@@ -1,36 +1,13 @@
-<div class="container-fluid">
+<div class="container content">
 	<div class="row">
-	  <div class="col-md-4">
-	  	<div class="homepagebox">
-	  		<h1><%= home.players.name %></h1>
-	  	</div>
-	  </div>
-	  <div class="col-md-4">
-	  	<div class="homepagebox">
-	  		<h2>Question Aggregator</h2>
-	  	</div>
-	  </div>
-	  <div class="col-md-4">
-	  	<div class="homepagebox">
-	  		<h1>Leaderboards</h1>
-	  	</div>
-	  </div>
-	</div>
-	<div class="row">
-	  <div class="col-md-4">
-	  	<div class="homepagebox">
-	  		<h1>Prize of the Month</h1>
-	  	</div>
-	  </div>
-	  <div class="col-md-4">
-	  	<div class="homepagebox">
-	  		<h1>Timeline</h1>
-	  	</div>
-	  </div>
-	  <div class="col-md-4">
-	  	<div class="homepagebox">
-	  		<h1>Forum Owner of the Week</h1>
-	  	</div>
-	  </div>
+		<% home.forEach(function(item){ %>
+			<div class="col-md-4">
+				<a href="<%= item.url %>">
+	  				<div class="homepagebox">
+	  					<h2><%= item.name %></h2>
+	  				</div>
+	  			</a>
+	  		</div>
+		<% }); %>
 	</div>
 </div>
