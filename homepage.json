@@ -1,0 +1,26 @@
+{
+  "players": {
+    "name" : "Players",
+    "url" : "/"
+  },
+  "questions": {
+    "name" : "Question Aggregator",
+    "url" : "/"
+  },
+  "leaderboards": {
+    "name" : "Leaderboards",
+    "url" : "/"
+  },
+  "prizes": {
+    "name" : "Prize of the Month",
+    "url" : "/"
+  },
+  "timeline": {
+    "name" : "Timeline",
+    "url" : "/"
+  },
+  "forumowner": {
+    "name" : "Forum Owner of the Week",
+    "url" : "/"
+  }
+}
