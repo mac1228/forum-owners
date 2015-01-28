@@ -1,6 +1,6 @@
 <div class="container content">
 	<div class="row">
-		<% home.forEach(function(item){ %>
+		<% homeblocks.forEach(function(item){ %>
 			<div class="col-md-4">
 				<a href="<%= item.url %>">
 	  				<div class="homepagebox">
@@ -9,5 +9,10 @@
 	  			</a>
 	  		</div>
 		<% }); %>
+	</div>
+	<div class="row">
+		<div class="col-md-12" style="padding-top:50px;text-align:center">
+			<h3>Want to play? <a href="/signup"><button type="button" class="btn btn-info">Create Profile</button></a></h3> 
+		</div>
 	</div>
 </div>

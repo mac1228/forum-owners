@@ -3,7 +3,7 @@
   <head><% include partials/template/head.ejs %></head>
   <body>
   	<% include partials/template/header.ejs %>
-    <% if (typeof home != "undefined"){ %>
+    <% if (page === 'home'){ %>
     	<% include partials/content/home.ejs %>
     <% } %>
     <% include partials/template/footer.ejs %>
