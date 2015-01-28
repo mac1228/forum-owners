@@ -172,4 +172,8 @@ router.get('/timeline', function(req, res, next) {
   });
 });
 
+router.post('/post',function(req,res){
+   console.log(req.body.username) //you will get your data in this as object.
+})
+
 module.exports = router;
