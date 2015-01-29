@@ -4,12 +4,25 @@ var homedata = require('../homepage.json');
 var page;
 var playername;
 
+var azure = require('azure-storage');
+var nconf = require('nconf');
+nconf.env().file({ file: 'config.json'});
+var accountName = nconf.get("STORAGE_NAME");
+var accountKey = nconf.get("STORAGE_KEY");
+
+var tableService = azure.createTableService(accountName, accountKey);
+tableService.createTableIfNotExists('players', function(error, result, response){
+  if(!error){
+    // result contains true if created; false if already exists
+  }
+});
+
 //get playername cookie
 function getPlayerName(req, res){
 	if(req.cookies.playername){
 		playername = req.cookies.playername;
-    	res.cookie('playername', playername, { expires: new Date(Date.now() + 900000), httpOnly: true });
-  	}
+    res.cookie('playername', playername, { expires: new Date(Date.now() + 900000), httpOnly: true });
+  }
 }
 
 /* GET home page. */
@@ -207,8 +220,45 @@ router.get('/timeline', function(req, res, next) {
 
 /* POST create profile. */
 router.post('/createprofile',function(req,res){
-   res.cookie('playername', req.body.playername, { expires: new Date(Date.now() + 900000), httpOnly: true });
-   res.redirect('/');
-})
+  res.cookie('playername', req.body.playername, { expires: new Date(Date.now() + 900000), httpOnly: true });
+  var entGen = azure.TableUtilities.entityGenerator;
+  var task = {
+    PartitionKey: entGen.String(req.body.playername),
+    RowKey: entGen.String(req.body.password),
+    Stackoverflow: entGen.String(req.body.stackoverflow),
+    MSDN: entGen.String(req.body.msdn),
+    Alias: entGen.String(req.body.alias) 
+  };
+
+  tableService.insertEntity('players',task, function (error, result, response) {
+    if(!error){
+      // Entity inserted
+    }
+  });
+
+  res.redirect('/');
+});
+
+/* POST sign in */
+router.post('/signin',function(req,res){
+  console.log("signin pressed")
+  tableService.retrieveEntity('players', req.body.playername, req.body.password, function(error, result, response){
+    if(!error){
+      console.log('valid username and password');
+      res.cookie('playername', req.body.playername, { expires: new Date(Date.now() + 900000), httpOnly: true });
+    }else{
+      console.log(error);
+    }
+    res.redirect('/');
+  });
+  
+});
+
+/* POST sign out */
+router.post('/signout',function(req,res){
+  res.clearCookie('playername', { expires: new Date(Date.now() + 900000), httpOnly: true });
+  playername = undefined;
+  res.redirect('/');
+});
 
 module.exports = router;
