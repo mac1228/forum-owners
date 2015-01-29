@@ -36,7 +36,7 @@
 	          </li>
         	</ul>
         </div>
-        <% if (typeof remember == "undefined"){ %>
+        <% if (typeof playername == "undefined"){ %>
     		<form class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" placeholder="Alias" class="form-control">
@@ -49,7 +49,7 @@
     	<% } else {%>
     		<div class="navbar-right">
     			<ul class="nav navbar-nav">
-    				<li><a href="#">Hi, Michael</a></li>
+    				<li><a href="/profile">Hi, <%= playername %></a></li>
     			</ul>
     		</div>
     	<% } %>
