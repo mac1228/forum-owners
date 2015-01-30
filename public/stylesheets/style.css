@@ -28,3 +28,31 @@ a:hover {
     font-family: "wf_segoe-ui_light";
     src: url("/fonts/latest.woff") format('woff');
 }
+
+.obj{
+	width: 200px;
+	height: 200px;
+}
+
+.avatar{
+	width: 15em;
+	height: 15em;
+	padding: 2em;
+}
+
+.avatar:hover{
+	border: solid;
+}
+
+#preview{
+	width: 200px;
+	height: 200px;
+	border: solid;
+	border-width: 1px;
+}
+
+#picplaceholder{
+	margin-left: 35%;
+	margin-top: 40%;
+}
+

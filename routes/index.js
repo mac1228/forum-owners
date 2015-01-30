@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var homedata = require('../homepage.json');
+var avatars = require('../avatars.json');
 var page;
 var playername;
 
@@ -15,6 +16,14 @@ tableService.createTableIfNotExists('players', function(error, result, response)
   if(!error){
     // result contains true if created; false if already exists
   }
+});
+
+var blobService = azure.createBlobService(accountName, accountKey);
+blobService.createContainerIfNotExists('profilepics', {publicAccessLevel : 'blob'}, function(error, result, response){
+    if(!error){
+        // if result = true, container was created.
+        // if result = false, container already existed.
+    }
 });
 
 //get playername cookie
@@ -70,11 +79,14 @@ router.get('/questions', function(req, res, next) {
 
 /* GET Sign up page. */
 router.get('/signup', function(req, res, next) {
+  var avatararray = [];
+  avatararray = avatars.avatars;
   getPlayerName(req, res);	
   res.render('index', { 
   	title: 'Create Profile',
   	page : 'signup',
-  	playername: playername 
+  	playername: playername,
+    avatars: avatararray 
   });
 });
 

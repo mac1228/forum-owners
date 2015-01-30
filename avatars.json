@@ -1,0 +1,28 @@
+{
+  "avatars": [
+    {
+      "name" : "red",
+      "url" : "/images/red.png"
+    },
+    {
+      "name" : "blue",
+      "url" : "/images/blue.png"
+    },
+    {
+      "name" : "green",
+      "url" : "/images/green.png"
+    },
+    {
+      "name" : "peebo",
+      "url" : "/images/peebo.png"
+    },
+    {
+      "name" : "pink",
+      "url" : "/images/pink.png"
+    },
+    {
+      "name" : "yellow",
+      "url" : "/images/yellow.png"
+    }
+  ]
+}
