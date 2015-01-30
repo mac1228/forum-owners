@@ -102,11 +102,23 @@ router.get('/players', function(req, res, next) {
 
 /* GET profile page. */
 router.get('/profile', function(req, res, next) {
+  var blah;
+  var query = new azure.TableQuery()
+    .top(1)
+    .where('PartitionKey eq ?', req.cookies.playername);
+  tableService.queryEntities('players',query, null, function(error, result, response) {
+    if(!error) {
+      console.log(result.entries[0].Avatar._);
+      blah = result.entries[0].Avatar._;
+    }
+  });
+  var blobUrl = blobService.getUrl("profilepics", "pink.png");
   getPlayerName(req, res);	
   res.render('index', { 
   	title: 'Profile',
   	page: 'profile',
-  	playername: playername 
+  	playername: playername,
+    avatar: blobUrl 
   });
 });
 
@@ -239,7 +251,8 @@ router.post('/createprofile',function(req,res){
     RowKey: entGen.String(req.body.password),
     Stackoverflow: entGen.String(req.body.stackoverflow),
     MSDN: entGen.String(req.body.msdn),
-    Alias: entGen.String(req.body.alias) 
+    Alias: entGen.String(req.body.alias),
+    Avatar: entGen.String(req.body.avatar + ".png") 
   };
 
   tableService.insertEntity('players',task, function (error, result, response) {

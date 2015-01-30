@@ -24,5 +24,5 @@ $(".avatar").click(function() {
   $(".avatar").removeClass("selected");
   var $avatar = $(this);
   $avatar.addClass("selected");
-  $("#avatarselection").attr("name", "avatarurl").val($avatar.attr("src"));
+  $("#avatarselection").attr("name", "avatar").val($avatar.attr("selection"));
 });
