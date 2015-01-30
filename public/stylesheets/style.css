@@ -35,13 +35,17 @@ a:hover {
 }
 
 .avatar{
-	width: 15em;
-	height: 15em;
+	width: 10em;
+	height: 10em;
 	padding: 2em;
 }
 
 .avatar:hover{
-	border: solid;
+	cursor: pointer;
+}
+
+.avatar.selected{
+	background-color: #eee;
 }
 
 #preview{

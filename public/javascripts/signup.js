@@ -19,3 +19,8 @@ $("input[type=password]").keyup(function(){
 		$("#pwmatch").css("color","#FF0004");
 	}
 });
+
+$(".avatar").click(function() {
+  $(".avatar").removeClass("selected");
+  $(this).addClass("selected");
+});
