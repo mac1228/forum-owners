@@ -22,5 +22,7 @@ $("input[type=password]").keyup(function(){
 
 $(".avatar").click(function() {
   $(".avatar").removeClass("selected");
-  $(this).addClass("selected");
+  var $avatar = $(this);
+  $avatar.addClass("selected");
+  $("#avatarselection").attr("name", "avatarurl").val($avatar.attr("src"));
 });
