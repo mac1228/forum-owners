@@ -102,24 +102,23 @@ router.get('/players', function(req, res, next) {
 
 /* GET profile page. */
 router.get('/profile', function(req, res, next) {
-  var blah;
   var query = new azure.TableQuery()
     .top(1)
     .where('PartitionKey eq ?', req.cookies.playername);
   tableService.queryEntities('players',query, null, function(error, result, response) {
     if(!error) {
       console.log(result.entries[0].Avatar._);
-      blah = result.entries[0].Avatar._;
+      var blobUrl = blobService.getUrl("profilepics", result.entries[0].Avatar._);
+      getPlayerName(req, res);  
+      res.render('index', { 
+        title: 'Profile',
+        page: 'profile',
+        playername: playername,
+        avatar: blobUrl 
+      });
     }
   });
-  var blobUrl = blobService.getUrl("profilepics", "pink.png");
-  getPlayerName(req, res);	
-  res.render('index', { 
-  	title: 'Profile',
-  	page: 'profile',
-  	playername: playername,
-    avatar: blobUrl 
-  });
+  
 });
 
 /* GET tournament page. */

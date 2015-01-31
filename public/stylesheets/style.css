@@ -40,6 +40,10 @@ a:hover {
 	padding: 2em;
 }
 
+#preview > .avatar{
+    padding: 0;
+}
+
 .avatar:hover{
 	cursor: pointer;
 }
@@ -53,10 +57,5 @@ a:hover {
 	height: 200px;
 	border: solid;
 	border-width: 1px;
-}
-
-#picplaceholder{
-	margin-left: 35%;
-	margin-top: 40%;
 }
 
