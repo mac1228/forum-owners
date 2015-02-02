@@ -21,7 +21,15 @@ a:hover {
 }
 
 .content{
-	padding-top: 80px;
+	padding-top: 5em;
+}
+
+.rowsep{
+	padding-top: 5em;
+}
+
+.colsep{
+	padding: 0em 4em;
 }
 
 @font-face {
@@ -42,6 +50,10 @@ a:hover {
 
 #preview > .avatar{
     padding: 0;
+    margin-left: 2em;
+    margin-top: 2em;
+    width: 20em;
+    height: 20em;
 }
 
 .avatar:hover{
@@ -53,9 +65,7 @@ a:hover {
 }
 
 #preview{
-	width: 200px;
-	height: 200px;
-	border: solid;
-	border-width: 1px;
+	width: 4em;
+	height: 4em;
 }
 

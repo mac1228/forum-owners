@@ -1,7 +1,50 @@
 <div class="container-fluid content">			
-	<input type="file" id="input" onchange="handleFiles(this.files)">	
-	<div id="preview">
-		<img class="avatar" src="<%= avatar %>">
+	<div class="col-md-4">
+		<div class="row">
+			<h1 class="page-header">Hi, <%= info.PartitionKey._ %></h1>
+			<div class="col-md-6">
+				<div id="preview">
+					<img class="avatar" src="<%= avatar %>">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="row">
+					<h3>Player Name:</h3> <%= info.PartitionKey._ %>
+				</div>
+				<div class="row">
+					<h3>StackOverflow:</h3> <%= info.Stackoverflow._ %>
+				</div>
+				<div class="row">
+					<h3>MSDN:</h3> <%= info.MSDN._ %>
+				</div>
+				<div class="row">
+					<h3>Microsoft Alias:</h3> <%= info.Alias._ %>
+				</div>
+			</div>
+		</div>
+		<div class="row rowsep">
+			<h3 class="page-header">Ranking</h3>
+		</div>
+		<div class="row rowsep">
+			<div class="ranking">Coming Soon</div>
+		</div>
 	</div>
-	<button class="btn btn-primary">Make Profile Pic</button>	
+	<div class="col-md-4 colsep">
+		<div class="row">
+			<h1 class="page-header">Threads</h1>
+		</div>
+		<div class="row rowsep">
+			<div class="threads">Coming Soon</div>
+		</div>
+	</div>
+	<div class="col-md-4 colsep">
+		<div class="row">
+			<h1 class="page-header">Badges</h1>
+		</div>
+		<div class="row rowsep">
+			<div class="badges">Coming Soon</div>
+		</div>
+	</div>	
 </div>
+<!-- <input type="file" id="input" onchange="handleFiles(this.files)">	 -->
+<!-- <button class="btn btn-primary">Make Profile Pic</button>	 -->

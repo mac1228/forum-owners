@@ -92,11 +92,19 @@ router.get('/signup', function(req, res, next) {
 
 /* GET add players page. */
 router.get('/players', function(req, res, next) {
-  getPlayerName(req, res);	
-  res.render('index', { 
-  	title: 'List of Players',
-  	page : 'players',
-  	playername: playername 
+  var query = new azure.TableQuery();
+  tableService.queryEntities('players',query, null, function(error, result, response) {
+    if(!error) {
+      console.log(result.entries);
+      var players = result.entries;
+      getPlayerName(req, res);  
+      res.render('index', { 
+        title: 'List of Players',
+        page: 'players',
+        playername: playername,
+        players: players  
+      });
+    }
   });
 });
 
@@ -107,14 +115,15 @@ router.get('/profile', function(req, res, next) {
     .where('PartitionKey eq ?', req.cookies.playername);
   tableService.queryEntities('players',query, null, function(error, result, response) {
     if(!error) {
-      console.log(result.entries[0].Avatar._);
+      console.log(result.entries[0]);
       var blobUrl = blobService.getUrl("profilepics", result.entries[0].Avatar._);
       getPlayerName(req, res);  
       res.render('index', { 
         title: 'Profile',
         page: 'profile',
         playername: playername,
-        avatar: blobUrl 
+        avatar: blobUrl,
+        info: result.entries[0]  
       });
     }
   });
@@ -251,6 +260,7 @@ router.post('/createprofile',function(req,res){
     Stackoverflow: entGen.String(req.body.stackoverflow),
     MSDN: entGen.String(req.body.msdn),
     Alias: entGen.String(req.body.alias),
+    ForumOwner: entGen.String(req.body.forumowner),
     Avatar: entGen.String(req.body.avatar + ".png") 
   };
 
