@@ -32,6 +32,9 @@ function getPlayerName(req, res){
 		playername = req.cookies.playername;
     res.cookie('playername', playername, { expires: new Date(Date.now() + 900000), httpOnly: true });
   }
+  else{
+    playername = undefined;
+  }
 }
 
 /* GET home page. */
@@ -172,11 +175,19 @@ router.get('/achievements', function(req, res, next) {
 
 /* GET Forum Owner of the Week page. */
 router.get('/forumowner', function(req, res, next) {
-  getPlayerName(req, res);	
-  res.render('index', { 
-  	title: 'Forum Owner of the Week',
-  	page: 'forumowner',
-  	playername: playername 
+  var query = new azure.TableQuery();
+  tableService.queryEntities('rotation',query, null, function(error, result, response) {
+    if(!error) {
+      console.log(result.entries);
+      var weeks = result.entries;
+      getPlayerName(req, res);  
+      res.render('index', { 
+        title: 'Forum Owner of the Week',
+        page: 'forumowner',
+        playername: playername,
+        weeks: weeks  
+      });
+    }
   });
 });
 
