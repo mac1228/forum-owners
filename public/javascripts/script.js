@@ -20,3 +20,10 @@
 //     reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
 //     reader.readAsDataURL(file);
 // }
+$( document ).ready(function() {
+    $('.myAffix').affix({
+  		offset: {
+    		top: 100		
+  		}
+	})
+});
