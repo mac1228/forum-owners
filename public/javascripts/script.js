@@ -22,8 +22,6 @@
 // }
 $( document ).ready(function() {
     $('.myAffix').affix({
-  		offset: {
-    		top: 100		
-  		}
+  		
 	})
 });
