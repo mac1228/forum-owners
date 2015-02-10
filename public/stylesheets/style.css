@@ -2,6 +2,12 @@ body {
   font-family:segoe ui light;
 }
 
+.leaderboardSelection{
+	width: 25em;
+	margin-top: 5em;
+	margin-left: 5em;
+}
+
 .topnav{
 	padding: 0px 20px;
 }
@@ -52,6 +58,22 @@ a:hover {
     padding: 0;
     width: 20em;
     height: 20em;
+}
+
+#forumOwnerPic > .avatar{
+    padding: 0;
+    width: 20em;
+    height: 20em;
+}
+
+#playerlist > .avatar{
+    padding: 0;
+    width: 5em;
+    height: 5em;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+	vertical-align: middle;
 }
 
 .avatar:hover{

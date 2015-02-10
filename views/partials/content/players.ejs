@@ -11,14 +11,18 @@
         </tr>
       </thead>
       <tbody>
-      	<% var i = 1; %>
+      	<% var i = 0; %>
       	<% players.forEach(function(item){ %>
       		<tr>
-      			<th scope="row"><%= i %></th>
-      			<td><%= item.PartitionKey._ %></td>
-      			<td><%=item.Stackoverflow._%></td>
-      			<td><%=item.MSDN._%></td>
-      			<td><%=item.Alias._%></td>
+      			<th scope="row">
+              <div id="playerlist">
+                <img class="avatar" src='<%= avatars[i] %>'>
+              </div>
+            </th>
+      			<td class="verticalmiddle"><%= item.PartitionKey._ %></td>
+      			<td class="verticalmiddle"><%=item.Stackoverflow._%></td>
+      			<td class="verticalmiddle"><%=item.MSDN._%></td>
+      			<td class="verticalmiddle"><%=item.Alias._%></td>
       		</tr>
       		<% i++ %>
       	<% }); %>

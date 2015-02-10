@@ -52,11 +52,23 @@ router.get('/', function(req, res, next) {
 
 /* GET leaderboard page. */
 router.get('/leaderboards', function(req, res, next) {
-  getPlayerName(req, res);	
-  res.render('index', { 
-  	title: 'Leaderboard',
-  	page : 'leaderboards',
-  	playername: playername
+  var query = new azure.TableQuery();
+  tableService.queryEntities('players',query, null, function(error, result, response) {
+    if(!error) {
+      var avatararray = [];
+      result.entries.forEach(function(player){
+        avatararray.push(blobService.getUrl("profilepics", player.Avatar._));
+      });
+      var players = result.entries;
+      getPlayerName(req, res);  
+      res.render('index', { 
+        title: 'Leaderboard',
+        page: 'leaderboards',
+        playername: playername,
+        players: players,
+        avatars: avatararray  
+      });
+    }
   });
 });
 
@@ -98,14 +110,19 @@ router.get('/players', function(req, res, next) {
   var query = new azure.TableQuery();
   tableService.queryEntities('players',query, null, function(error, result, response) {
     if(!error) {
-      console.log(result.entries);
+      var avatararray = [];
+      result.entries.forEach(function(player){
+        avatararray.push(blobService.getUrl("profilepics", player.Avatar._));
+      });
+      console.log(avatararray);
       var players = result.entries;
       getPlayerName(req, res);  
       res.render('index', { 
         title: 'List of Players',
         page: 'players',
         playername: playername,
-        players: players  
+        players: players,
+        avatars: avatararray  
       });
     }
   });
@@ -175,17 +192,41 @@ router.get('/achievements', function(req, res, next) {
 
 /* GET Forum Owner of the Week page. */
 router.get('/forumowner', function(req, res, next) {
-  var query = new azure.TableQuery();
-  tableService.queryEntities('rotation',query, null, function(error, result, response) {
+  var date = new Date();
+  var now = date.getTime();
+  console.log(now);
+  var week = 604800000;
+  var weekAhead = now + week;
+  var query = new azure.TableQuery().where('RowKey lt ?', weekAhead.toString());
+  var combinedQuery = query.and('RowKey gt ?', now.toString());
+  var rotationQuery = new azure.TableQuery().where('RowKey gt ?', now.toString());
+  tableService.queryEntities('rotation',rotationQuery, null, function(error, result, response) {
     if(!error) {
-      console.log(result.entries);
-      var weeks = result.entries;
-      getPlayerName(req, res);  
-      res.render('index', { 
-        title: 'Forum Owner of the Week',
-        page: 'forumowner',
-        playername: playername,
-        weeks: weeks  
+      var currentRotation;
+      var currentForumOwner;
+      tableService.queryEntities('rotation',combinedQuery, null, function(error1, result1, response1) {
+        if(!error) {
+          currentForumOwner = result1.entries[0].PlayerName._;
+          currentRotation = result1.entries[0].Rotation._;
+          var avatarQuery = new azure.TableQuery().where('PartitionKey eq ?', currentForumOwner);
+          tableService.queryEntities('players',avatarQuery, null, function(error2, result2, response2) {
+            if(!error) {
+              console.log(result2.entries);
+              var blobUrl = blobService.getUrl("profilepics", result2.entries[0].Avatar._);
+              var weeks = result.entries;
+              getPlayerName(req, res);  
+              res.render('index', { 
+                title: 'Forum Owner of the Week',
+                page: 'forumowner',
+                playername: playername,
+                weeks: weeks,
+                currentRotation: currentRotation,
+                currentForumOwner: currentForumOwner,
+                avatar: blobUrl  
+              });
+            }
+          });
+        }
       });
     }
   });
@@ -207,16 +248,6 @@ router.get('/trackedforums', function(req, res, next) {
   res.render('index', { 
   	title: 'Tracked Forums',
   	page: 'trackedforums',
-  	playername: playername 
-  });
-});
-
-/* GET Forum Owner Schedule page. */
-router.get('/schedule', function(req, res, next) {
-  getPlayerName(req, res);	
-  res.render('index', { 
-  	title: 'Forum Owner Schedule',
-  	page: 'schedule',
   	playername: playername 
   });
 });
