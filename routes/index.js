@@ -285,16 +285,6 @@ router.get('/howthisworks', function(req, res, next) {
   });
 });
 
-/* GET Roles and Responsibilities page. */
-router.get('/responsibilities', function(req, res, next) {
-  getPlayerName(req, res);	
-  res.render('index', { 
-  	title: 'Roles and Responsibilities',
-  	page: 'responsibilities',
-  	playername: playername 
-  });
-});
-
 /* GET Prize of the Month page. */
 router.get('/prizes', function(req, res, next) {
   getPlayerName(req, res);	

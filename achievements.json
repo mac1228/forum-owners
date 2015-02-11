@@ -71,6 +71,11 @@
       "url" : "/images/champ.png"
     },
     {
+      "name" : "Forum King",
+      "req" : "Most points in a year",
+      "url" : "/images/forum-king.jpg"
+    },
+    {
       "name" : "Forum Boss",
       "req" : "Most points all time",
       "url" : "/images/forumboss.jpg"
