@@ -21,9 +21,9 @@
       "class": "prizes"
     },
     {
-      "name" : "Timeline",
-      "url" : "/timeline",
-      "class": "timeline"
+      "name" : "List of Achievements",
+      "url" : "/achievements",
+      "class": "achievements"
     },
     {
       "name" : "Forum Owner of the Week",

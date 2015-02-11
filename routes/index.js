@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var homedata = require('../homepage.json');
 var avatars = require('../avatars.json');
+var achievements = require('../achievements.json');
 var page;
 var playername;
 
@@ -201,11 +202,14 @@ router.get('/challenges', function(req, res, next) {
 
 /* GET List of Achievements page. */
 router.get('/achievements', function(req, res, next) {
+  var achievementsarray = [];
+  achievementsarray = achievements.achievements;
   getPlayerName(req, res);	
   res.render('index', { 
   	title: 'List of Achievements',
   	page: 'achievements',
-  	playername: playername 
+  	playername: playername,
+    achievements: achievementsarray 
   });
 });
 

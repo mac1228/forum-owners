@@ -1,0 +1,79 @@
+{
+  "achievements": [
+    {
+      "name" : "Forum Noob!",
+      "req" : "You created your profile on Stack Overflow and MSDN and emailed the links to micurd",
+      "url" : "/images/forum-noob.png"
+    },
+    {
+      "name" : "First Post!",
+      "req" : "You answered your first question on one of the forums",
+      "url" : "/images/first-post.jpg"
+    },
+    {
+      "name" : "Answer Bunny",
+      "req" : "You can get one every time you answer a question as long as you remember to ask for it :)",
+      "url" : "/images/answer-bunny.png"
+    },
+    {
+      "name" : "Post Assist",
+      "req" : "You helped a forum owner answer a post, you can also get one of these every time you help a forum owner answer a question and he/she remembers to let us know about it",
+      "url" : "/images/post-assist.jpg"
+    },
+    {
+      "name" : "Pre-School",
+      "req" : "You have 5 answers on the forums",
+      "url" : "/images/preschool.png"
+    },
+    {
+      "name" : "Middle-School",
+      "req" : "You have at least 10 answers on the forums",
+      "url" : "/images/middleschool.png"
+    },
+    {
+      "name" : "High School",
+      "req" : "You have at least 15 answers on the forums",
+      "url" : "/images/highschool.png"
+    },
+    {
+      "name" : "College",
+      "req" : "You have at least 20 answers on the forums",
+      "url" : "/images/college.png"
+    },
+    {
+      "name" : "Senior Citizen",
+      "req" : "You have at least 50 answers on the forums",
+      "url" : "/images/seniorcitizen.png"
+    },
+    {
+      "name" : "Respect!",
+      "req" : "100 Reputation on Stack Overflow",
+      "url" : "/images/respect.jpg"
+    },
+    {
+      "name" : "Badger!",
+      "req" : "First badge on Stack Overflow",
+      "url" : "/images/badge.png"
+    },
+    {
+      "name" : "Hotshot of the Day",
+      "req" : "Most points in  day",
+      "url" : "/images/hotshot.png"
+    },
+    {
+      "name" : "Warrior of the Week",
+      "req" : "Most points in a week",
+      "url" : "/images/warrior.png"
+    },
+    {
+      "name" : "Monthly Champ",
+      "req" : "Most points in a month",
+      "url" : "/images/champ.png"
+    },
+    {
+      "name" : "Forum Boss",
+      "req" : "Most points all time",
+      "url" : "/images/forumboss.jpg"
+    }
+  ]
+}
