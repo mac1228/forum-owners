@@ -3,6 +3,7 @@ var router = express.Router();
 var homedata = require('../homepage.json');
 var avatars = require('../avatars.json');
 var achievements = require('../achievements.json');
+var trackedforums = require('../trackedforums.json');
 var page;
 var playername;
 
@@ -267,11 +268,17 @@ router.get('/cannedresponses', function(req, res, next) {
 
 /* GET Tracked Forums page. */
 router.get('/trackedforums', function(req, res, next) {
+  var soarray = trackedforums.stackoverflow;
+  var msdnarray = trackedforums.msdn;
+  var optionalarray = trackedforums.optional;
   getPlayerName(req, res);	
   res.render('index', { 
   	title: 'Tracked Forums',
   	page: 'trackedforums',
-  	playername: playername 
+  	playername: playername,
+    stackoverflow: soarray,
+    msdn: msdnarray,
+    optional: optionalarray 
   });
 });
 

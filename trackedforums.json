@@ -1,0 +1,83 @@
+{
+  "stackoverflow": [
+    {
+      "name" : "windows-azure-storage",
+      "url" : "http://stackoverflow.com/questions/tagged/windows-azure-storage"
+    },
+    {
+      "name" : "azure-storage",
+      "url" : "http://stackoverflow.com/questions/tagged/azure-storage"
+    },
+    {
+      "name" : "azure-storage-blobs",
+      "url" : "http://stackoverflow.com/questions/tagged/azure-storage-blobs"
+    },
+    {
+      "name" : "azure-storage-tables",
+      "url" : "http://stackoverflow.com/questions/tagged/azure-storage-tables"
+    },
+    {
+      "name" : "azure-table-storage",
+      "url" : "http://stackoverflow.com/questions/tagged/azure-table-storage"
+    },
+    {
+      "name" : "windows-azure-queues",
+      "url" : "http://stackoverflow.com/questions/tagged/windows-azure-queues"
+    },
+    {
+      "name" : "azure-storage-queues",
+      "url" : "http://stackoverflow.com/questions/tagged/azure-storage-queues"
+    },
+    {
+      "name" : "azure-storage-emulator",
+      "url" : "http://stackoverflow.com/questions/tagged/azure-storage-emulator"
+    },
+    {
+      "name" : "all azure storage tags",
+      "url" : "http://stackoverflow.com/questions/tagged/windows-azure-storage+or+azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator"
+    },
+    {
+      "name" : "azure",
+      "url" : "http://stackoverflow.com/questions/tagged/azure"
+    }
+  ],
+  "msdn": [
+    {
+      "name" : "azure storage",
+      "url" : "http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=windowsazuredata"
+    },
+    {
+      "name" : "azure",
+      "url" : "http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home"
+    }
+  ],
+  "optional": [
+    {
+      "name" : "azure storage questions",
+      "url" : "wastore@microsoft.com"
+    },
+    {
+      "name" : "azure storage discussion",
+      "url" : "wastoretalk@microsoft.com"
+    },
+    {
+      "name" : "azure tech talk",
+      "url" : "winazrtt@microsoft.com"
+    },
+    {
+      "name" : "storage blog",
+      "url" : "http://blogs.msdn.com/b/windowsazurestorage/"
+    }
+  ]
+}
+
+    
+    
+    
+    
+    
+    
+
+    
+ 
+    
