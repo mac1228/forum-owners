@@ -47,6 +47,19 @@ a:hover {
     src: url("/fonts/latest.woff") format('woff');
 }
 
+footer{
+	margin-top: 10em;
+}
+
+.howthisworksimg{
+	width: 45em;
+	height: 30em;
+}
+
+.howthisworkslist > li{
+	font-size: 2em;
+}
+
 .obj{
 	width: 200px;
 	height: 200px;

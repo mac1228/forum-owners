@@ -6,9 +6,9 @@
       "class": "players"
     },
     {
-      "name" : "Forum Questions",
-      "url" : "/questions",
-      "class": "questions"
+      "name" : "How this works?",
+      "url" : "/howthisworks",
+      "class": "howthisworks"
     },
     {
       "name" : "Leaderboards",
