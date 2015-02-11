@@ -26,6 +26,10 @@ a:hover {
     text-decoration: none;
 }
 
+.timeline{
+	display: inline;
+}
+
 .content{
 	padding-top: 5em;
 }

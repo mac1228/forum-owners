@@ -53,20 +53,39 @@ router.get('/', function(req, res, next) {
 /* GET leaderboard page. */
 router.get('/leaderboards', function(req, res, next) {
   var query = new azure.TableQuery();
-  tableService.queryEntities('players',query, null, function(error, result, response) {
-    if(!error) {
-      var avatararray = [];
-      result.entries.forEach(function(player){
-        avatararray.push(blobService.getUrl("profilepics", player.Avatar._));
-      });
-      var players = result.entries;
-      getPlayerName(req, res);  
-      res.render('index', { 
-        title: 'Leaderboard',
-        page: 'leaderboards',
-        playername: playername,
-        players: players,
-        avatars: avatararray  
+  tableService.queryEntities('daypoints',query, null, function(error1, result1, response1) {
+    if(!error1) {
+      tableService.queryEntities('weekpoints',query, null, function(error2, result2, response2) {
+        if(!error2) {
+          tableService.queryEntities('monthpoints',query, null, function(error3, result3, response3) {
+            if(!error3) {
+              tableService.queryEntities('yearpoints',query, null, function(error4, result4, response4) {
+                if(!error4) {
+                  tableService.queryEntities('alltimepoints',query, null, function(error5, result5, response5) {
+                    if(!error5) {
+                      var today = result1.entries;
+                      var week = result2.entries;
+                      var month = result3.entries;
+                      var year = result4.entries;
+                      var alltime = result5.entries;
+                      getPlayerName(req, res);  
+                      res.render('index', { 
+                        title: 'Leaderboard',
+                        page: 'leaderboards',
+                        playername: playername,
+                        today: today,
+                        week: week,
+                        month: month,
+                        year: year,
+                        alltime: alltime 
+                      });
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
       });
     }
   });
@@ -205,12 +224,12 @@ router.get('/forumowner', function(req, res, next) {
       var currentRotation;
       var currentForumOwner;
       tableService.queryEntities('rotation',combinedQuery, null, function(error1, result1, response1) {
-        if(!error) {
+        if(!error1) {
           currentForumOwner = result1.entries[0].PlayerName._;
           currentRotation = result1.entries[0].Rotation._;
           var avatarQuery = new azure.TableQuery().where('PartitionKey eq ?', currentForumOwner);
           tableService.queryEntities('players',avatarQuery, null, function(error2, result2, response2) {
-            if(!error) {
+            if(!error2) {
               console.log(result2.entries);
               var blobUrl = blobService.getUrl("profilepics", result2.entries[0].Avatar._);
               var weeks = result.entries;
